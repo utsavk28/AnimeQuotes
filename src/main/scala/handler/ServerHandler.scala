@@ -2,31 +2,30 @@ package handler
 
 import external.AnimeChanApi
 import model.AnimeQuote
-
+import database.Database
 object ServerHandler {
-  var favoriteQuotes: Array[AnimeQuote] = Array()
 
   def getRandomAnimeQuotes(): AnimeQuote = {
     AnimeChanApi.getRandomAnimeQuote()
   }
 
   def getFavoriteAnimeQuotes(): Array[AnimeQuote] = {
-    favoriteQuotes
+    Database.favoriteQuotes
   }
 
   def addAnimeQuotesToFavorite(animeQuote: AnimeQuote): String = {
-    if (favoriteQuotes.contains(animeQuote)) {
+    if (Database.favoriteQuotes.contains(animeQuote)) {
       "AnimeQuote Already In"
     }
     else {
-      favoriteQuotes = favoriteQuotes :+ animeQuote
+      Database.favoriteQuotes = Database.favoriteQuotes :+ animeQuote
       "AnimeQuote Added Successfully"
     }
   }
 
   def deleteAnimeQuotesToFavorite(animeQuote: AnimeQuote): String = {
-    if (favoriteQuotes.contains(animeQuote)) {
-      favoriteQuotes = favoriteQuotes.filter(_.quote != animeQuote.quote)
+    if (Database.favoriteQuotes.contains(animeQuote)) {
+      Database.favoriteQuotes = Database.favoriteQuotes.filter(_.quote != animeQuote.quote)
       "AnimeQuote Removed Successfully"
     }
     else {

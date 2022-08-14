@@ -2,7 +2,7 @@ package util
 import akka.http.scaladsl.server.Directives
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import model._
-import spray.json.*
+import spray.json._
 
 trait JsonSupport extends SprayJsonSupport with DefaultJsonProtocol {
   implicit val animeFormat: RootJsonFormat[Anime] = jsonFormat1(Anime)

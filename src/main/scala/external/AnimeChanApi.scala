@@ -3,12 +3,11 @@ package external
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.{HttpRequest, HttpResponse}
 import akka.http.scaladsl.unmarshalling.Unmarshal
-import model.*
+import model._
 import util.JsonSupport
 
-import scala.concurrent.duration.*
+import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
-import scala.util.{Failure, Success}
 
 object AnimeChanApi extends API with JsonSupport {
   override val endpoint = "https://animechan.vercel.app/api"
